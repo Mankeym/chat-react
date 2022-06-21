@@ -19,12 +19,12 @@ const Header = () => {
                     {
                         user ? (
                             <>
-                           <RouteButton onClick={()=> signOut(auth)} name={'Выйти'} path={'/login'} />
+                           <RouteButton onClick={()=> signOut(auth)} name={'Выйти'} path={'#/login'} />
                             </>
                         ) : (
                             <>
-                            <RouteButton onClick={null} name={'Авторизоваться'} path={'/login'} />
-                            <RouteButton onClick={null} name={'Зарегистрироваться'} path={'/registration'} />
+                            <RouteButton onClick={null} name={'Авторизоваться'} path={'#/login'} />
+                            <RouteButton onClick={null} name={'Зарегистрироваться'} path={'#/registration'} />
                             </>
                         )
                     }

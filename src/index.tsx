@@ -5,7 +5,7 @@ import {getAuth} from 'firebase/auth'
 import {getFirestore} from 'firebase/firestore'
 import './index.sass';
 import App from "./components/App";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter} from "react-router-dom";
 
 const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyBeIMnptyr9cK7bFKV62jKBqfsvXKsYkkk",
@@ -34,9 +34,9 @@ root.render(
           auth,
           firestore
       }} >
-      <BrowserRouter>
+      <HashRouter>
             <App />
-      </BrowserRouter>
+      </HashRouter>
       </ContextAuth.Provider>
   </React.StrictMode>
 );
