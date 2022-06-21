@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/chat-react/static/css/main.0ed94eec.css",
-    "main.js": "/chat-react/static/js/main.1362444b.js",
+    "main.js": "/chat-react/static/js/main.aa250407.js",
     "static/media/google-svgrepo-com.svg": "/chat-react/static/media/google-svgrepo-com.61bb457409478d1c3fea.svg",
     "static/media/github-svgrepo-com (1).svg": "/chat-react/static/media/github-svgrepo-com (1).3b8eb6aefa05e6b31ab8.svg",
     "index.html": "/chat-react/index.html",
     "main.0ed94eec.css.map": "/chat-react/static/css/main.0ed94eec.css.map",
-    "main.1362444b.js.map": "/chat-react/static/js/main.1362444b.js.map"
+    "main.aa250407.js.map": "/chat-react/static/js/main.aa250407.js.map"
   },
   "entrypoints": [
     "static/css/main.0ed94eec.css",
-    "static/js/main.1362444b.js"
+    "static/js/main.aa250407.js"
   ]
 }
