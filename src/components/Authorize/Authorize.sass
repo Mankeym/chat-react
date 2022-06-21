@@ -1,0 +1,103 @@
+.authorize
+  border-radius: 10px
+  max-width: 800px
+  display: flex
+  justify-content: center
+  flex-direction: column
+  gap: 40px
+  width: 100%
+  align-items: center
+  .authorize__form
+    display: flex
+    justify-content: center
+    align-content: center
+    flex-direction: column
+    max-width: 460px
+    width: 100%
+    .authorize__title
+      font-family: 'Roboto', sans-serif
+      font-style: normal
+      font-weight: 700
+      font-size: 32px
+      line-height: 39px
+      color: #000000
+      text-align: center
+  .authorize__input-container
+    display: flex
+    flex-direction: column
+    gap: 10px
+    margin: 50px 0 60px 0
+    .authorize__input-title
+      font-family: 'Roboto',sans-serif
+      font-style: normal
+      font-weight: 700
+      font-size: 14px
+      line-height: 17px
+      color: #000000
+    .authorize__input
+      border: none
+      border-bottom: 2px solid black
+      padding: 10px 0 10px 5px
+      font-size: 16px
+
+.authorize__submit
+  background-color: #FF4646
+  color: white
+  font-family: 'Roboto', sans-serif
+  font-weight: bold
+  border: 2px solid black
+  border-radius: 10px
+  padding: 22px 30px
+  font-size: 16px
+  transform: scale(1)
+  transition: .35s
+.authorize__submit:hover
+  transform: scale(1.05)
+  cursor: pointer
+
+.authorize__alternative-container
+  display: flex
+  flex-direction: column
+  align-items: center
+  max-width: 260px
+  width: 100%
+  gap: 10px
+  .authorize__alternative-button
+    max-width: 260px
+    width: 100%
+    position: relative
+    font-family: 'Roboto',sans-serif
+    font-style: normal
+    font-weight: bold
+    font-size: 14px
+    line-height: 17px
+    height: 50px
+    border-radius: 10px
+    padding-left: 30px
+    cursor: pointer
+  .authorize__alternative-button_google
+    background-color: white
+    color: black
+    &:before
+      content: ''
+      background: url("../../img/google-svgrepo-com.svg")
+      position: absolute
+      top: 10px
+      left: 12px
+      width: 24px
+      height: 24px
+  .authorize__alternative-button_github
+    background-color: black
+    color: white
+    &:before
+      content: ''
+      background: url("../../img/github-svgrepo-com (1).svg") white
+      background-size: contain
+      position: absolute
+      top: 10px
+      left: 12px
+      width: 24px
+      height: 24px
+      border-radius: 10px
+
+

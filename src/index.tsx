@@ -1,19 +1,42 @@
-import React from 'react';
+import React, {createContext} from 'react';
+import firebase from 'firebase/compat/app';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {getAuth} from 'firebase/auth'
+import {getFirestore} from 'firebase/firestore'
+import './index.sass';
+import App from "./components/App";
+import {BrowserRouter} from "react-router-dom";
+
+const firebaseApp = firebase.initializeApp({
+    apiKey: "AIzaSyBeIMnptyr9cK7bFKV62jKBqfsvXKsYkkk",
+    authDomain: "chat-react-b4d56.firebaseapp.com",
+    projectId: "chat-react-b4d56",
+    storageBucket: "chat-react-b4d56.appspot.com",
+    messagingSenderId: "240726805397",
+    appId: "1:240726805397:web:8d5eecc6558d0f0501449c",
+    measurementId: "G-KJM6ZYQKV0"
+})
+
+
+const auth = getAuth(firebaseApp)
+const firestore = getFirestore(firebaseApp);
+export const ContextAuth = createContext({
+    auth,
+    firestore
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+      <ContextAuth.Provider value={{
+          auth,
+          firestore
+      }} >
+      <BrowserRouter>
+            <App />
+      </BrowserRouter>
+      </ContextAuth.Provider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

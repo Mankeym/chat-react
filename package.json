@@ -10,9 +10,16 @@
     "@types/node": "^16.11.41",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.5",
+    "firebase": "^9.8.3",
+    "firebase-firestore-timestamp": "^1.0.4",
+    "firebaseui": "^6.0.1",
+    "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-firebase-hooks": "^5.0.3",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-scrollbars-custom": "^4.0.27",
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
@@ -39,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "firebase-admin": "^11.0.0",
+    "gh-pages": "^4.0.0"
   }
 }
