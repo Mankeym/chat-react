@@ -2,11 +2,10 @@ import React from 'react';
 import './Registration.sass'
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {ContextAuth} from "../../index";
-import {useNavigate} from "react-router-dom";
+import {addDoc, collection} from "firebase/firestore";
 
 const Registration = () => {
-    const {auth} = React.useContext(ContextAuth)
-    console.log(typeof document.querySelector('.registration__input_email'))
+    const {auth,firestore} = React.useContext(ContextAuth)
     const registration = (e: React.SyntheticEvent<EventTarget>) =>{
         e.preventDefault()
         const email = document.querySelector('.registration__input_email')
@@ -15,10 +14,24 @@ const Registration = () => {
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
+                const pushUsersDB = async () => {
+                    await addDoc(collection(firestore, "users"), {
+                        uid: user.uid,
+                        email: user.email,
+                        name: null,
+                        photoUrl: null
+                    });
+                }
+                pushUsersDB()
+                    .then((result)=>{
+                        console.log(result)
+                    })
+                    .catch((error)=>{
+                        alert(error)
+                    })
 
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
                 alert(errorMessage)
             });
