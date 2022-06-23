@@ -23,14 +23,19 @@ const Chat = () => {
     const sendMessage = async (e: React.SyntheticEvent<EventTarget>) => {
         e.preventDefault()
         if(value.length > 0){
-            await addDoc(collection(firestore, "messages"), {
-            uid: user?.uid,
-            displayName: userData?.displayName ? userData?.displayName : user?.displayName ? user?.displayName : 'Аноним',
-            photoUrl: user?.photoURL,
-            text: value,
-            createAt: Timestamp.now().seconds
-        });
-        setValue('')
+            if(userProfileActive.length > 0){
+                await addDoc(collection(firestore, "messages"), {
+                    uid: user?.uid,
+                    displayName: userData?.name ? userData?.name : user?.displayName ? user?.displayName :  'Аноним',
+                    photoUrl: user?.photoURL,
+                    text: value,
+                    createAt: Timestamp.now().seconds
+                });
+                setValue('')
+            } else {
+                alert('Выберите собеседника')
+            }
+
         } else {
             alert('Введите сообщение')
         }
@@ -47,7 +52,7 @@ const Chat = () => {
             setUserProfileActive(dataId)
         }
     }
-    console.log(users)
+    console.log(userData)
 
 
     return (
@@ -64,18 +69,19 @@ const Chat = () => {
                 </div>
                 <div className={'chat__container'}>
                     {
+                        userProfileActive.length > 0 ?
                         messages?.sort((a: any, b: any) => {
                             return a.createAt - b.createAt
-                        }).filter((i)=> i.uid === userProfileActive).map((item) => (
+                        }).filter((i)=> i.uid === userProfileActive || user.uid === i.uid).map((item) => (
                             <div className={user?.uid === item.uid ? 'chat__element chat__element_self' : 'chat__element '}>
                                 <h4 className={'chat__element-title'}>
-                                    {userData?.displayName ? userData?.displayName : item?.displayName ? item?.displayName : 'Аноним'}
+                                    {item?.displayName ? item?.displayName : userData?.name ? userData?.name : 'Аноним'}
                                 </h4>
                                 <p className={'chat__element-subtitle'}>
                                     {item.text}
                                 </p>
                             </div>
-                        ))
+                        )) : ''
                     }
                 </div>
             </div>

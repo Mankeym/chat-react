@@ -25,21 +25,24 @@ const Authorize = () => {
             return item.uid === user.uid ? setUserDB(true) : ''
 
         })
-        const pushUsersDB = async () => {
-            await addDoc(collection(firestore, "users"), {
-                uid: user?.uid,
-                email: user?.email,
-                name: user?.displayName,
-                photoUrl: user.photoUrl ? user.photoURL : null
-            });
+        if(!userDB){
+            const pushUsersDB = async () => {
+                await addDoc(collection(firestore, "users"), {
+                    uid: user?.uid,
+                    email: user?.email,
+                    name: user?.displayName,
+                    photoUrl: user.photoUrl ? user.photoURL : null
+                });
+            }
+            pushUsersDB()
+                .then((result)=>{
+                    console.log(result)
+                })
+                .catch((error)=>{
+                    alert(error)
+                })
         }
-        pushUsersDB()
-            .then((result)=>{
-                console.log(result)
-            })
-            .catch((error)=>{
-                alert(error)
-            })
+
 
     }
 
