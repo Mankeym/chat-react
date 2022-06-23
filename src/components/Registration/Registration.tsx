@@ -9,7 +9,8 @@ const Registration = () => {
     const registration = (e: React.SyntheticEvent<EventTarget>) =>{
         e.preventDefault()
         const email = document.querySelector('.registration__input_email')
-        const password   = document.querySelector('.registration__input_password')
+        const password = document.querySelector('.registration__input_password')
+        const name = document.querySelector('.registration__input_fio')
         createUserWithEmailAndPassword(auth, (email as HTMLInputElement).value, (password as HTMLInputElement).value)
             .then((userCredential) => {
                 // Signed in
@@ -18,7 +19,7 @@ const Registration = () => {
                     await addDoc(collection(firestore, "users"), {
                         uid: user.uid,
                         email: user.email,
-                        name: null,
+                        name: (name as HTMLInputElement).value,
                         photoUrl: null
                     });
                 }
@@ -38,16 +39,18 @@ const Registration = () => {
     }
     return (
         <div className={'registration'}>
-            <form className={'registration__form'}>
+            <form onSubmit={registration} className={'registration__form'}>
                 <input type={'hidden'} className={'registration__input_hidden'} />
                 <h1 className={'registration__title'}>Регистрация</h1>
                 <div className={'registration__input-container'}>
+                    <span className={'registration__input-title'}>ФИО</span>
+                    <input className={'registration__input registration__input_fio'} type={"text"} id={'fio'} name={'fio'} placeholder={'Петр Яковлев'}required />
                     <span className={'registration__input-title'}>Email</span>
-                    <input className={'registration__input registration__input_email'} type={"email"} id={'email'} name={'email'} placeholder={'net@mail.ru'} />
+                    <input className={'registration__input registration__input_email'} type={"email"} id={'email'} name={'email'} placeholder={'net@mail.ru'} required/>
                     <span className={'registration__input-title'}>Пароль</span>
-                    <input className={'registration__input registration__input_password'}  type={"password"} id={'password'} name={'password'} placeholder={'**********'}/>
+                    <input className={'registration__input registration__input_password'}  type={"password"} id={'password'} name={'password'} placeholder={'**********'} required/>
                 </div>
-                <button onClick={registration} className={'registration__submit'}>Зарегистрироваться</button>
+                <button className={'registration__submit'}>Зарегистрироваться</button>
             </form>
         </div>
     );

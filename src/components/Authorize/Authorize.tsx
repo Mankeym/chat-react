@@ -1,18 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Authorize.sass'
 import {ContextAuth} from "../../index";
 import firebase from "firebase/compat/app";
 import { signInWithPopup,GoogleAuthProvider,signInWithEmailAndPassword,GithubAuthProvider } from "firebase/auth";
 import firebaseui from "firebaseui";
+import {useCollectionData} from "react-firebase-hooks/firestore";
+import {addDoc, collection} from "firebase/firestore";
+import {useAuthState} from "react-firebase-hooks/auth";
 
 
 const Authorize = () => {
-    const {auth} = React.useContext(ContextAuth)
+    const {auth,firestore} = React.useContext(ContextAuth)
+    const [user]:any = useAuthState(auth)
+    const [users, loadingUsers] = useCollectionData(
+        collection(firestore, 'users')
+    )
+    const [userDB, setUserDB] = useState(false)
+
     const loginGoogle = async () =>{
         const provider:any = new GoogleAuthProvider()
         const {user}:any = await signInWithPopup(auth,provider)
         console.log(user)
+        users?.forEach((item)=> {
+            return item.uid === user.uid ? setUserDB(true) : ''
+
+        })
+        const pushUsersDB = async () => {
+            await addDoc(collection(firestore, "users"), {
+                uid: user?.uid,
+                email: user?.email,
+                name: user?.displayName,
+                photoUrl: user.photoUrl ? user.photoURL : null
+            });
+        }
+        pushUsersDB()
+            .then((result)=>{
+                console.log(result)
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+
     }
+
     const loginPasswordAndEmail =  (e: React.SyntheticEvent<EventTarget>) =>{
         e.preventDefault()
         const email = document.querySelector('.registration__input_email')
