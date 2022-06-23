@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/chat-react/static/css/main.a3075598.css",
-    "main.js": "/chat-react/static/js/main.24ed9f4c.js",
+    "main.css": "/chat-react/static/css/main.52582528.css",
+    "main.js": "/chat-react/static/js/main.e9795142.js",
     "static/media/blankdirectory.png": "/chat-react/static/media/blankdirectory.0ddfe4d4a61a21d65a06.png",
     "static/media/google-svgrepo-com.svg": "/chat-react/static/media/google-svgrepo-com.61bb457409478d1c3fea.svg",
     "static/media/github-svgrepo-com (1).svg": "/chat-react/static/media/github-svgrepo-com (1).3b8eb6aefa05e6b31ab8.svg",
     "index.html": "/chat-react/index.html",
-    "main.a3075598.css.map": "/chat-react/static/css/main.a3075598.css.map",
-    "main.24ed9f4c.js.map": "/chat-react/static/js/main.24ed9f4c.js.map"
+    "main.52582528.css.map": "/chat-react/static/css/main.52582528.css.map",
+    "main.e9795142.js.map": "/chat-react/static/js/main.e9795142.js.map"
   },
   "entrypoints": [
-    "static/css/main.a3075598.css",
-    "static/js/main.24ed9f4c.js"
+    "static/css/main.52582528.css",
+    "static/js/main.e9795142.js"
   ]
 }
